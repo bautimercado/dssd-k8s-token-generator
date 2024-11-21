@@ -2,7 +2,7 @@
 
 ## Entorno virtual
 
-Activar entorno virutal:
+Activar entorno virutal (si no está la carpeta venv, ejecutar también la primera instrucción, si la carpeta está no es necesario ejecutarla):
 - Linux:
     ```bash
     python -m venv venv
@@ -17,4 +17,9 @@ Activar entorno virutal:
 ## Instalar dependencias:
 ```bash
 pip install -r requirements.txt
+```
+
+## Levantar servidor:
+```bash
+uvicorn main:app --reload
 ```
