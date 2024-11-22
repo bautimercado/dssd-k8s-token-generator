@@ -11,13 +11,7 @@ def test_generate_token():
     token_generation_data: dict = {
         "collection_point": collection_point
     }
-
-    # Hacer la petición POST
     response = client.post('/tokens/generate-token/', json=token_generation_data)
-
-    print(f'RESPUESTA: {response}')  # Para ver la respuesta completa en los logs
-
-    # Verificar que la respuesta sea correcta
     assert response.status_code == 200
     assert 'token' in response.json()
 
