@@ -23,3 +23,8 @@ pip install -r requirements.txt
 ```bash
 uvicorn app.main:app --reload
 ```
+
+## Ejecución de tests:
+```bash
+pytest
+```
