@@ -28,4 +28,4 @@ def get_winner_route(db: Session = Depends(get_db)) -> int:
     winner_token = get_winner(db)
     if winner_token:
         return {'message': 'Ganador seleccionado', 'token': winner_token}
-    raise HTTPException(status_code=404, detail="No hay tokens registrados")
+    raise HTTPException(status_code=404, detail='No hay tokens registrados')
