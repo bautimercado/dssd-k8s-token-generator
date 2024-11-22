@@ -21,5 +21,5 @@ pip install -r requirements.txt
 
 ## Levantar servidor:
 ```bash
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 ```
