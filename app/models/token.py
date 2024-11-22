@@ -15,7 +15,7 @@ class Token(Base):
     """
     __tablename__ = 'tokens'
     id = Column(Integer, primary_key=True, unique=True, autoincrement=True)
-    collection_point = Column(Integer, nullable=False, unique=True)
+    collection_point = Column(Integer, nullable=False)
     token = Column(Integer, nullable=False, unique=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
