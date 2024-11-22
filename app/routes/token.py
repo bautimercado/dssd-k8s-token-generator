@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
 
 from app.crud.token import generate_token, get_winner

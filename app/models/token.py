@@ -2,7 +2,7 @@ from datetime import datetime
 
 from sqlalchemy import Column, DateTime, Integer
 
-from app.db.session import Base
+from app.db.base import Base
 
 
 class Token(Base):
