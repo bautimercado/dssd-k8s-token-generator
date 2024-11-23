@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "token-generator-k8s.fullname" . }}
+  labels:
+    {{- include "token-generator-k8s.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "token-generator-k8s.selectorLabels" . | nindent 4 }}
