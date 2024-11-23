@@ -28,16 +28,12 @@ spec:
     - host: {{ .host | quote }}
       http:
         paths:
-          {{- range .paths }}
-          - path: {{ .path }}
-            {{- with .pathType }}
-            pathType: {{ . }}
-            {{- end }}
+          - path: /
+            pathType: Prefix
             backend:
               service:
                 name: {{ include "token-generator-k8s.fullname" $ }}
                 port:
                   number: {{ $.Values.service.port }}
-          {{- end }}
     {{- end }}
 {{- end }}
