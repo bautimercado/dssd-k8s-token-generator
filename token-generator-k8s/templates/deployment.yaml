@@ -50,8 +50,10 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-          - name: sqlite-storage
-            mountPath: /app/data
+            {{- if .Values.persistence.enabled }}
+            - name: sqlite-storage
+              mountPath: /app/data
+            {{- end }}
           resources:
             requests:
               memory: {{ .Values.resources.requests.memory }}
@@ -59,12 +61,12 @@ spec:
             limits:
               memory: {{ .Values.resources.limits.memory }}
               cpu: {{ .Values.resources.limits.cpu }}
-      {{- with .Values.volumes }}
       volumes:
-      - name: sqlite-storage
-        persistentVolumeClaim:
-          claimName: {{ .Release.Name }}-pvc
-      {{- end }}
+        {{- if .Values.persistence.enabled }}
+        - name: sqlite-storage
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-pvc
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
