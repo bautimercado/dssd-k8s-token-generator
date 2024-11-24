@@ -6,8 +6,8 @@ app = FastAPI()
 app.include_router(token_router, prefix='/tokens', tags=['tokens'])
 
 @app.get('/')
-def read_root():
+def health_check():
     """
     Función de prueba
     """
-    return {"message": "Bienvenido al servicio de generación de tokens."}
+    return {"status": "ok"}
