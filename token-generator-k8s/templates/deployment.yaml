@@ -42,7 +42,7 @@ spec:
               protocol: TCP
           env:
           - name: DATABASE_URL
-            value: "sqlite:///app/data/tokens.db"
+            value: "sqlite:///data/tokens.db"
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
