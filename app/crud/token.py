@@ -4,35 +4,27 @@ from sqlalchemy.orm import Session
 
 
 def generate_token(collection_point: int, session: Session) -> int:
-    """
-    Función que crea un token aleatorio y único para
-    el punto de recolección.
-    """
-    token = random.randint(1000,9999)
+    existing_token = session.query(Token).filter(Token.collection_point == collection_point).first()
 
+    if existing_token:
+        return existing_token.token
+
+    token = random.randint(1000, 9999)
     while session.query(Token).filter(Token.token == token).first():
-        token = random.randint(1000,9999)
+        token = random.randint(1000, 9999)
 
     new_token = Token(
         collection_point=collection_point,
         token=token
     )
-
     session.add(new_token)
     session.commit()
-
     return token
 
 
-def get_winner(session: Session) -> int:
-    """
-    Función que retorna el token del ganador del sorteo (obtenido
-    de manera aleatoria).
-    """
+def get_winner(session: Session) -> dict:
     tokens = session.query(Token).all()
     if tokens:
-        # THE WINNER TAKES IT ALL
         winner = random.choice(tokens)
-        return winner.token
-    else:
-        return None
+        return {"token": winner.token, "collection_point": winner.collection_point}
+    return None

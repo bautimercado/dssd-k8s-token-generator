@@ -28,9 +28,14 @@ def create_token(request: GenerateTokenRequest, db: Session = Depends(get_db)) -
 @router.get('/winner/')
 def get_winner_route(db: Session = Depends(get_db)) -> dict:
     """
-    Endpoint GET para retornar el token del ganador
+    Endpoint GET para retornar el token del ganador junto con su punto de recolección
     """
-    winner_token = get_winner(db)
-    if winner_token:
-        return {'message': 'Ganador seleccionado', 'token': winner_token}
+    winner = get_winner(db)
+    if winner:
+        return {
+            'message': f"Ganador seleccionado! Felicitaciones, Punto de Recolección {winner['collection_point']}",
+            'token': winner['token'],
+            'collection_point': winner['collection_point']
+        }
     raise HTTPException(status_code=404, detail='No hay tokens registrados')
+
