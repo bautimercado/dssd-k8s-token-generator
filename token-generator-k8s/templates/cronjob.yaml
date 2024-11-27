@@ -15,5 +15,5 @@ spec:
               - "curl"
               - "-X"
               - "GET"
-              - "http://{{ .Release.Name }}-service:8000/tokens/winner/"
+              - "http://token-service.local/tokens/winner/"
           restartPolicy: OnFailure
