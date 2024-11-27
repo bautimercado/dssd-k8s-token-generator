@@ -19,7 +19,7 @@ jobs:
     - name: Build Docker Image
       run: |
         docker build -t ${{ secrets.DOCKER_USERNAME }}/dssd-k8s-token-generator:${{ github.sha }} .
-        docker tag ${{ secrets.DOCKER_USERNAME }}/dssd-k8s-token-generator:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/nombre-imagen:latest
+        docker tag ${{ secrets.DOCKER_USERNAME }}/dssd-k8s-token-generator:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/dssd-k8s-token-generator:latest
     - name: Push Docker Image
       run: |
         docker push ${{ secrets.DOCKER_USERNAME }}/dssd-k8s-token-generator:${{ github.sha }}
