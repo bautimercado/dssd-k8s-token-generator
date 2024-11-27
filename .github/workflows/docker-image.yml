@@ -18,9 +18,9 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build Docker Image
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/nombre-imagen:${{ github.sha }} .
-        docker tag ${{ secrets.DOCKER_USERNAME }}/nombre-imagen:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/nombre-imagen:latest
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/dssd-k8s-token-generator:${{ github.sha }} .
+        docker tag ${{ secrets.DOCKER_USERNAME }}/dssd-k8s-token-generator:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/nombre-imagen:latest
     - name: Push Docker Image
       run: |
-        docker push ${{ secrets.DOCKER_USERNAME }}/nombre-imagen:${{ github.sha }}
-        docker push ${{ secrets.DOCKER_USERNAME }}/nombre-imagen:latest
+        docker push ${{ secrets.DOCKER_USERNAME }}/dssd-k8s-token-generator:${{ github.sha }}
+        docker push ${{ secrets.DOCKER_USERNAME }}/dssd-k8s-token-generator:latest
